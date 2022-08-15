@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Vormkracht10\LaravelOpenGraphImage\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelOpenGraphImageCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-open-graph-image';
 
     public $description = 'My command';
 
