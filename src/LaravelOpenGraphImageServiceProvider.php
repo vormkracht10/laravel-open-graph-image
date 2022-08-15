@@ -4,7 +4,6 @@ namespace Vormkracht10\LaravelOpenGraphImage;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Vormkracht10\LaravelOpenGraphImage\Commands\LaravelOpenGraphImageCommand;
 
 class LaravelOpenGraphImageServiceProvider extends PackageServiceProvider
 {

@@ -3,14 +3,14 @@
 namespace Vormkracht10\LaravelOpenGraphImage\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Spatie\Browsershot\Browsershot;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Browsershot\Browsershot;
 
 class LaravelOpenGraphController
 {
     public function __invoke(Request $request)
     {
-        if(! app()->environment('local') && ! $request->hasValidSignature()) {
+        if (! app()->environment('local') && ! $request->hasValidSignature()) {
             abort(403);
         }
 
@@ -19,11 +19,11 @@ class LaravelOpenGraphController
 
         $html = view('open-graph-image.template', compact('title'));
 
-        if($request->route()->getName() == 'open-graph-image') {
+        if ($request->route()->getName() == 'open-graph-image') {
             return $html;
         }
 
-        if(! Storage::disk('public')->exists('social/open-graph/'.$filename)) {
+        if (! Storage::disk('public')->exists('social/open-graph/'.$filename)) {
             $this->saveOpenGraphImage($html, $filename);
         }
 
@@ -46,7 +46,7 @@ class LaravelOpenGraphController
     {
         return response(
             Storage::disk('public')->get('social/open-graph/'.$filename), 200, [
-            'Content-Type' => 'image/jpeg',
-        ]);
+                'Content-Type' => 'image/jpeg',
+            ]);
     }
 }
