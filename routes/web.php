@@ -5,4 +5,3 @@ use Vormkracht10\LaravelOpenGraphImage\Http\Controllers\LaravelOpenGraphImageCon
 
 Route::get('open-graph-image', [LaravelOpenGraphImageController::class, '__invoke'])->name('open-graph-image');
 Route::get('open-graph-image.jpg', [LaravelOpenGraphController::class, '__invoke'])->name('open-graph-image-file');
-
