@@ -35,13 +35,13 @@
             font-weight: 700;
             src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff");
         }
-        {!! file_get_contents(public_path('css/app.css')) !!}
+        {!! file_get_contents(public_path('vendor/open-graph-image/app.css')) !!}
         </style>
     </head>
     <body class="flex items-center justify-center min-h-screen">
         <div class="bg-gray-900 w-[1200px] h-[630px] text-white p-12 border-emerald-400 border-b-[16px]">
             <h1 class="font-bold text-[90px] text-emerald-400 leading-none">{!! explode(' - ', $title)[0] !!}</h1>
-            <h2 class="mt-6 text-[50px] font-bold text-gray-200 uppercase">Rocketeers</h2>
+            <h2 class="mt-6 text-[50px] font-bold text-gray-200 uppercase">{{ config('app.name') }}</h2>
             <div class="inline-block px-6 py-3 mt-10 text-[30px] font-bold text-white rounded-lg bg-emerald-500">Read more here</div>
         </div>
     </body>
