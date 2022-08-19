@@ -16,9 +16,10 @@ class LaravelOpenGraphImageController
         }
 
         $title = $request->title ?? config('app.name');
+        $subtitle = $request->subtitle ?? null;
         $filename = Str::slug($title).'.jpg';
 
-        $html = view('vendor.open-graph-image.template', compact('title'));
+        $html = view('vendor.open-graph-image.template', compact('title', 'subtitle'));
 
         if ($request->route()->getName() == 'open-graph-image') {
             return $html;

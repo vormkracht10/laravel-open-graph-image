@@ -31,7 +31,7 @@ php artisan vendor:publish --tag="open-graph-image-assets"
 Just add the following meta tag to your page.
 
 ```html
-<meta property="og:image" content="{!! url()->signedRoute('open-graph-image', ['title' => 'Test']) !!}">
+<meta property="og:image" content="{!! url()->signedRoute('open-graph-image', ['title' => 'Lorem isum', 'subtitle' => 'Dolor sit amet']) !!}">
 ```
 
 ## Changelog
