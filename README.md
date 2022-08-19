@@ -32,6 +32,12 @@ You can publish the views using
 php artisan vendor:publish --tag="open-graph-image-views"
 ```
 
+You can publish the assets using
+
+```bash
+php artisan vendor:publish --tag="open-graph-image-assets"
+```
+
 ## Usage
 
 ```php
