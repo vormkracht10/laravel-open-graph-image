@@ -40,15 +40,10 @@ php artisan vendor:publish --tag="open-graph-image-assets"
 
 ## Usage
 
-```php
-$laravelOpenGraphImage = new Vormkracht10\LaravelOpenGraphImage();
-echo $laravelOpenGraphImage->echoPhrase('Hello, Vormkracht10!');
-```
+Just add the following meta tag to your page.
 
-## Testing
-
-```bash
-composer test
+```html
+<meta property="og:image" content="{!! url()->signedRoute('open-graph-image', ['title' => 'Test']) !!}">
 ```
 
 ## Changelog
