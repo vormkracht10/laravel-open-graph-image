@@ -14,7 +14,7 @@ This Laravel package enables you to dynamically create Open Graph images for you
 - [ ] Command to clear open graph image cache
 - [ ] Config: image type (+ quality), image size, cache location, option to use browse URL instead of HTML input (slower, but makes fonts available)
 - [ ] Remove unneeded files from package skeleton
-- [ ] Use Tailwindcss CDN in default view (https://tailwindcss.com/docs/installation/play-cdn) and remove dist folder
+- [x] Use Tailwindcss CDN in default view (https://tailwindcss.com/docs/installation/play-cdn) and remove dist folder
 - [ ] Create nice style for default view
 - [ ] Separate route for previewing open graph image (while designing) and only available for local environment
 
@@ -30,12 +30,6 @@ You can publish the views using
 
 ```bash
 php artisan vendor:publish --tag="open-graph-image-views"
-```
-
-You can publish the assets using
-
-```bash
-php artisan vendor:publish --tag="open-graph-image-assets"
 ```
 
 ## Usage

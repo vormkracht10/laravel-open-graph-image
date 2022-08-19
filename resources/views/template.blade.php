@@ -35,8 +35,8 @@
             font-weight: 700;
             src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff");
         }
-        {!! file_get_contents(public_path('vendor/open-graph-image/app.css')) !!}
         </style>
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="flex items-center justify-center min-h-screen">
         <div class="bg-gray-900 w-[1200px] h-[630px] text-white p-12 border-emerald-400 border-b-[16px]">
