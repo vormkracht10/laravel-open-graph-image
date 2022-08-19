@@ -26,30 +26,10 @@ You can install the package via composer:
 composer require vormkracht10/laravel-open-graph-image
 ```
 
-You can publish and run the migrations with:
+You can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="laravel-open-graph-image-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="laravel-open-graph-image-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-open-graph-image-views"
+php artisan vendor:publish --tag="open-graph-image-views"
 ```
 
 ## Usage
