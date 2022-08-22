@@ -4,6 +4,7 @@ namespace Vormkracht10\LaravelOpenGraphImage\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 use Spatie\Browsershot\Browsershot;
 
@@ -19,7 +20,11 @@ class LaravelOpenGraphImageController
         $subtitle = $request->subtitle ?? null;
         $filename = Str::slug($title).'.jpg';
 
-        $html = view('vendor.open-graph-image.template', compact('title', 'subtitle'));
+        $html = View::first([
+            'vendor.open-graph-image.template',
+            'open-graph-image.template',
+            'template'
+        ], compact('title', 'subtitle'));
 
         if ($request->route()->getName() == 'open-graph-image') {
             return $html;

@@ -10,7 +10,7 @@ This Laravel package enables you to dynamically create Open Graph images for you
 
 - [ ] Create Blade component
 - [ ] Generate image filename based on component parameters
-- [ ] Overwrite view with vendor in Laravel app but default to package view
+- [x] Overwrite view with vendor in Laravel app but default to package view
 - [ ] Command to clear open graph image cache
 - [ ] Config: image type (+ quality), image size, cache location, option to use browse URL instead of HTML input (slower, but makes fonts available)
 - [x] Remove unneeded files from package skeleton
