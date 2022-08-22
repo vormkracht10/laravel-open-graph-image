@@ -24,7 +24,8 @@ class LaravelOpenGraphImageController
             'vendor.open-graph-image.template',
             'open-graph-image.template',
             'template',
-        ], compact('title', 'subtitle'));
+        ], compact('title', 'subtitle'))
+        ->render();
 
         if ($request->route()->getName() == 'open-graph-image') {
             return $html;
