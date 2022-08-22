@@ -14,7 +14,7 @@ return [
     // The cache location to use.
     'cache_location' => 'public/social/open-graph',
 
-    // Whether to use the browse URL instead of the HTML input. 
+    // Whether to use the browse URL instead of the HTML input.
     // This is slower, but makes fonts available.
     'use_browse_url' => true,
 ];
