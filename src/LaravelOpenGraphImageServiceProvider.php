@@ -12,7 +12,7 @@ class LaravelOpenGraphImageServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-open-graph-image')
             ->hasRoute('web')
-            ->hasAssets()
+            ->hasConfigFile()
             ->hasViews();
     }
 }

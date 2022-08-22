@@ -44,8 +44,8 @@ class LaravelOpenGraphImageController
 
         Browsershot::html($html)
             ->showBackground()
-            ->windowSize(1200, 630)
-            ->setScreenshotType('jpeg', 100)
+            ->windowSize(config('open-graph-image.image_width'), config('open-graph-image.image_height'))
+            ->setScreenshotType(config('open-graph-image.image_type'), config('open-graph-image.image_quality'))
             ->save($path);
     }
 
