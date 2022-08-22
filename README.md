@@ -32,6 +32,12 @@ You can publish the views using
 php artisan vendor:publish --tag="open-graph-image-views"
 ```
 
+You can publish the config using
+
+```bash
+php artisan vendor:publish --tag="open-graph-image-config"
+```
+
 ## Usage
 
 Just add the following metatag to your page.
