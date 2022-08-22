@@ -23,7 +23,7 @@ class LaravelOpenGraphImageController
         $html = View::first([
             'vendor.open-graph-image.template',
             'open-graph-image.template',
-            'template'
+            'template',
         ], compact('title', 'subtitle'));
 
         if ($request->route()->getName() == 'open-graph-image') {
