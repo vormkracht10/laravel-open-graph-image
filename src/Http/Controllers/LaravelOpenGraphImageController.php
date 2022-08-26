@@ -20,12 +20,14 @@ class LaravelOpenGraphImageController
         $subtitle = $request->subtitle ?? null;
         $filename = Str::slug($title).'.jpg';
 
-        $html = View::first([
-            'vendor.open-graph-image.template',
-            'open-graph-image.template',
-            'template',
-        ], compact('title', 'subtitle'))
-        ->render();
+        // $html = View::first([
+        //     'vendor.open-graph-image.template',
+        //     'open-graph-image.template',
+        //     'template',
+        // ], compact('title', 'subtitle'))
+        // ->render();
+
+        $html = view('vendor.open-graph-image.template', compact('title', 'subtitle'));
 
         if ($request->route()->getName() == 'open-graph-image') {
             return $html;
@@ -42,6 +44,7 @@ class LaravelOpenGraphImageController
     {
         $path = Storage::disk('public')
             ->path('social/open-graph/'.$filename);
+
 
         Browsershot::html($html)
             ->showBackground()
