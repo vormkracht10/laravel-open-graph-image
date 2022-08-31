@@ -43,7 +43,6 @@ class LaravelOpenGraphImageController
         $path = Storage::disk('public')
             ->path('social/open-graph/'.$filename);
 
-
         Browsershot::html($html)
             ->showBackground()
             ->windowSize(config('open-graph-image.image_width'), config('open-graph-image.image_height'))
