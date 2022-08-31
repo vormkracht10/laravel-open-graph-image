@@ -2,8 +2,10 @@
 
 namespace Vormkracht10\LaravelOpenGraphImage;
 
+use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Vormkracht10\LaravelOpenGraphImage\Components\LaravelOpenGraphImage;
 
 class LaravelOpenGraphImageServiceProvider extends PackageServiceProvider
 {
@@ -12,7 +14,10 @@ class LaravelOpenGraphImageServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-open-graph-image')
             ->hasRoute('web')
-            ->hasAssets()
+            ->hasConfigFile()
+            ->hasViewComponent('laravel-open-graph-image', LaravelOpenGraphImage::class)
             ->hasViews();
+
+        Blade::component('open-graph-image', LaravelOpenGraphImage::class);
     }
 }

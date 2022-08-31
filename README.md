@@ -32,14 +32,19 @@ You can publish the views using
 php artisan vendor:publish --tag="open-graph-image-views"
 ```
 
+You can publish the config using
+
+```bash
+php artisan vendor:publish --tag="open-graph-image-config"
+```
+You can publish the blade component using 
+    
+```bash
+php artisan vendor:publish --tag="laravel-open-graph-image-components"
+```
 ## Usage
 
-```php
-$laravelOpenGraphImage = new Vormkracht10\LaravelOpenGraphImage();
-echo $laravelOpenGraphImage->echoPhrase('Hello, Vormkracht10!');
-```
-
-## Testing
+Just add the following metatag to your page.
 
 ```bash
 composer test
