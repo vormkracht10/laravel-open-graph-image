@@ -35,7 +35,6 @@
             font-weight: 700;
             src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff");
         }
-        {!! file_get_contents(public_path('vendor/open-graph-image/app.css')) !!}
         </style>
     </head>
     <body class="flex items-center justify-center min-h-screen">

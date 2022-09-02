@@ -2,10 +2,11 @@
 
 namespace Vormkracht10\LaravelOpenGraphImage\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Spatie\Browsershot\Browsershot;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
 
 class LaravelOpenGraphImageController
 {
@@ -16,6 +17,7 @@ class LaravelOpenGraphImageController
         }
 
         $title = $request->title ?? config('app.name');
+        $subtitle = $request->subtitle ?? null;
         $filename = Str::slug($title).'.jpg';
 
         $html = View::first([
@@ -24,8 +26,6 @@ class LaravelOpenGraphImageController
             'template',
         ], compact('title', 'subtitle'))
         ->render();
-
-        // $html = view('vendor.open-graph-image.template', compact('title', 'subtitle'));
 
         if ($request->route()->getName() == 'open-graph-image') {
             return $html;
@@ -42,7 +42,6 @@ class LaravelOpenGraphImageController
     {
         $path = Storage::disk('public')
             ->path('social/open-graph/'.$filename);
-
 
         Browsershot::html($html)
             ->showBackground()
