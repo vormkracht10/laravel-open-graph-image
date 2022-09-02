@@ -1,22 +1,22 @@
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
-
-# A Laravel package to generate dynamic Open Graph images
+# Laravel Open Graph dynamic images
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/vormkracht10/laravel-open-graph-image.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/laravel-open-graph-image)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/vormkracht10/laravel-open-graph-image/run-tests?label=tests)](https://github.com/vormkracht10/laravel-open-graph-image/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/vormkracht10/laravel-open-graph-image/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/vormkracht10/laravel-open-graph-image/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/vormkracht10/laravel-open-graph-image.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/laravel-open-graph-image)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+This Laravel package enables you to dynamically create Open Graph images for your website. Just add the meta tag with our url to the head of your page.  The package will then generate the image and add it to the page. You can edit the view template which you can find in the resources folder.
 
-## Support us
+## To Do
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-open-graph-image.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-open-graph-image)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+- [ ] Create Blade component
+- [ ] Generate image filename based on component parameters
+- [x] Overwrite view with vendor in Laravel app but default to package view
+- [ ] Command to clear open graph image cache
+- [x] Config: image type (+ quality), image size, cache location, option to use browse URL instead of HTML input (slower, but makes fonts available)
+- [x] Remove unneeded files from package skeleton
+- [x] Use Tailwindcss CDN in default view (https://tailwindcss.com/docs/installation/play-cdn) and remove dist folder
+- [ ] Create nice style for default view
+- [x] Separate route for previewing open graph image (while designing) and only available for local environment
 
 ## Installation
 
@@ -42,12 +42,13 @@ You can publish the blade component using
 ```bash
 php artisan vendor:publish --tag="laravel-open-graph-image-components"
 ```
+
 ## Usage
 
 Just add the following metatag to your page.
 
-```bash
-composer test
+```html
+<x-open-graph-image title="Lorem ipsum" />
 ```
 
 ## Changelog
