@@ -2,12 +2,12 @@
 
 namespace Vormkracht10\LaravelOpenGraphImage\Http\Controllers;
 
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Spatie\Browsershot\Browsershot;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
+use Spatie\Browsershot\Browsershot;
 
 class LaravelOpenGraphImageController
 {
@@ -41,7 +41,7 @@ class LaravelOpenGraphImageController
 
     public function saveOpenGraphImage($html, $filename)
     {
-        if (!File::isDirectory(storage_path('app/public/social/open-graph'))) {
+        if (! File::isDirectory(storage_path('app/public/social/open-graph'))) {
             File::makeDirectory(storage_path('app/public/social/open-graph'), 0777, true);
         }
 
