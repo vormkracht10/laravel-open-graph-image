@@ -6,8 +6,8 @@ use Illuminate\View\Component;
 
 class Metatags extends Component
 {
-
     public $title;
+
     public $subtitle;
 
     public function __construct(string $title, string $subtitle)
