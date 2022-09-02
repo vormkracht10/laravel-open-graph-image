@@ -6,17 +6,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Str;
 use Spatie\Browsershot\Browsershot;
 
 class LaravelOpenGraphImageController
 {
     protected $imageExtension;
+
     protected $imageQuality;
+
     protected $imageWidth;
+
     protected $imageHeight;
+
     protected $storageDisk;
+
     protected $storagePath;
+
     protected $method;
 
     public function __construct()
@@ -29,7 +34,7 @@ class LaravelOpenGraphImageController
         $this->storagePath = config('open-graph-image.storage.path');
         $this->method = config('open-graph-image.method');
     }
-        
+
     public function __invoke(Request $request)
     {
         if (! app()->environment('local') && ! $request->hasValidSignature()) {
@@ -84,7 +89,7 @@ class LaravelOpenGraphImageController
 
     public function getImageType()
     {
-        return match($this->imageExtension) {
+        return match ($this->imageExtension) {
             'jpg' => 'jpeg',
             default => $this->imageExtension,
         };
