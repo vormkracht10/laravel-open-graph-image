@@ -48,7 +48,7 @@ php artisan vendor:publish --tag="laravel-open-graph-image-components"
 Just add the following metatag to your page.
 
 ```html
-<x-open-graph-image title="Lorem ipsum" />
+<x-open-graph-image::metatags />
 ```
 
 ## Changelog
