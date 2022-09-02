@@ -37,18 +37,13 @@ You can publish the config using
 ```bash
 php artisan vendor:publish --tag="open-graph-image-config"
 ```
-You can publish the blade component using 
     
-```bash
-php artisan vendor:publish --tag="laravel-open-graph-image-components"
-```
-
 ## Usage
 
 Just add the following metatag to your page.
 
 ```html
-<x-open-graph-image::metatags />
+<x-open-graph-image::metatags title="Lorem ipsum" subtitle="Dolor sit amet" />
 ```
 
 ## Changelog
