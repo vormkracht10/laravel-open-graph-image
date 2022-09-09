@@ -3,60 +3,128 @@
 namespace Vormkracht10\LaravelOpenGraphImage\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Str;
 use Spatie\Browsershot\Browsershot;
 
 class LaravelOpenGraphImageController
 {
+    protected $imageExtension;
+
+    protected $imageQuality;
+
+    protected $imageWidth;
+
+    protected $imageHeight;
+
+    protected $storageDisk;
+
+    protected $storagePath;
+
+    protected $method;
+
+    public function __construct()
+    {
+        $this->imageExtension = config('open-graph-image.image.extension');
+        $this->imageQuality = config('open-graph-image.image.quality');
+        $this->imageWidth = config('open-graph-image.image.width');
+        $this->imageHeight = config('open-graph-image.image.height');
+        $this->storageDisk = config('open-graph-image.storage.disk');
+        $this->storagePath = config('open-graph-image.storage.path');
+        $this->method = config('open-graph-image.method');
+    }
+
     public function __invoke(Request $request)
     {
         if (! app()->environment('local') && ! $request->hasValidSignature()) {
             abort(403);
         }
 
-        $title = $request->title ?? config('app.name');
-        $subtitle = $request->subtitle ?? null;
-        $filename = Str::slug($title).'.jpg';
-
-        // $html = View::first([
-        //     'vendor.open-graph-image.template',
-        //     'open-graph-image.template',
-        //     'template',
-        // ], compact('title', 'subtitle'))
-        // ->render();
-
-        $html = view('vendor.open-graph-image.template', compact('title', 'subtitle'));
+        $html = View::make('open-graph-image::template', $request->all())
+            ->render();
 
         if ($request->route()->getName() == 'open-graph-image') {
             return $html;
         }
 
-        if (! Storage::disk('public')->exists('social/open-graph/'.$filename)) {
-            $this->saveOpenGraphImage($html, $filename);
+        if (! $this->getStorageFileExists($request->signature)) {
+            $this->saveOpenGraphImage($html, $request->signature);
         }
 
-        return $this->getOpenGraphImageResponse($filename);
+        return $this->getOpenGraphImageResponse($request->signature);
+    }
+
+    public function getStorageDisk()
+    {
+        return Storage::disk($this->storageDisk);
+    }
+
+    public function getStoragePath()
+    {
+        return rtrim($this->storagePath, '/');
+    }
+
+    public function getStorageFileName($signature)
+    {
+        return $signature.'.'.$this->imageExtension;
+    }
+
+    public function getStorageFilePath($filename)
+    {
+        return $this->getStoragePath().'/'.$this->getStorageFileName($filename);
+    }
+
+    public function getStorageFileData($filename)
+    {
+        return $this->getStorageDisk()
+            ->get($this->getStorageFilePath($filename));
+    }
+
+    public function getStorageFileExists($filename)
+    {
+        return $this->getStorageDisk()
+            ->exists($this->getStorageFilePath($filename));
+    }
+
+    public function getImageType()
+    {
+        return match ($this->imageExtension) {
+            'jpg' => 'jpeg',
+            default => $this->imageExtension,
+        };
+    }
+
+    public function ensureDirectoryExists()
+    {
+        if (! File::isDirectory($this->getStoragePath())) {
+            File::makeDirectory($this->getStoragePath(), 0777, true);
+        }
+    }
+
+    public function getScreenshot($html, $filename)
+    {
+        return Browsershot::html($html)
+            ->showBackground()
+            ->windowSize($this->imageWidth, $this->imageHeight)
+            ->setScreenshotType($this->getImageType(), $this->imageQuality)
+            ->screenshot($this->getStorageFilePath($filename));
     }
 
     public function saveOpenGraphImage($html, $filename)
     {
-        $path = Storage::disk('public')
-            ->path('social/open-graph/'.$filename);
+        $this->ensureDirectoryExists();
 
-        Browsershot::html($html)
-            ->showBackground()
-            ->windowSize(config('open-graph-image.image_width'), config('open-graph-image.image_height'))
-            ->setScreenshotType(config('open-graph-image.image_type'), config('open-graph-image.image_quality'))
-            ->save($path);
+        $screenshot = $this->getScreenshot($html, $filename);
+
+        $this->getStorageDisk()
+            ->put($this->getStorageFilePath($filename), $screenshot);
     }
 
     public function getOpenGraphImageResponse($filename)
     {
-        return response(
-            Storage::disk('public')->get('social/open-graph/'.$filename), 200, [
-                'Content-Type' => 'image/jpeg',
-            ]);
+        return response($this->getStorageFileData($filename), 200, [
+            'Content-Type' => 'image/'.$this->getImageType(),
+        ]);
     }
 }

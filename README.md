@@ -6,18 +6,6 @@
 
 This Laravel package enables you to dynamically create Open Graph images for your website. Just add the meta tag with our url to the head of your page.  The package will then generate the image and add it to the page. You can edit the view template which you can find in the resources folder.
 
-## To Do
-
-- [x] Create Blade component
-- [x] Generate image filename based on component parameters
-- [x] Overwrite view with vendor in Laravel app but default to package view
-- [ ] Command to clear open graph image cache
-- [x] Config: image type (+ quality), image size, cache location, option to use browse URL instead of HTML input (slower, but makes fonts available)
-- [x] Remove unneeded files from package skeleton
-- [x] Use Tailwindcss CDN in default view (https://tailwindcss.com/docs/installation/play-cdn) and remove dist folder
-- [x] Create nice style for default view
-- [x] Separate route for previewing open graph image (while designing) and only available for local environment
-
 ## Installation
 
 You can install the package via composer:
@@ -26,25 +14,52 @@ You can install the package via composer:
 composer require vormkracht10/laravel-open-graph-image
 ```
 
-You can publish the views using
+Then you should install puppeteer:
+    
+```bash
+npm install puppeteer
+```
+
+You should publish the views using:
 
 ```bash
 php artisan vendor:publish --tag="open-graph-image-views"
 ```
 
-You can publish the config using
+You can optionally publish the config using:
 
 ```bash
 php artisan vendor:publish --tag="open-graph-image-config"
 ```
-
+    
 ## Usage
 
 Just add the following metatag to your page.
 
 ```html
-<x-open-graph-image title="Lorem ipsum"" />
+<x-open-graph-image::metatags title="Lorem ipsum" subtitle="Dolor sit amet" />
 ```
+
+When you share the page on any social media platform, the image will be generated and added to the page. The image from the default template will look like this:
+
+- [ ] Insert image here
+
+This component will use the 'template' blade view by default. You can change this template to your needs. It is even possible to pass more attributes than the default ones. You can find the default template in the resources folder. 
+
+All generated open graph images are cached by default. If you want to remove the cache, you can use the following command:
+
+```bash
+php artisan open-graph-image:clear-cache
+```
+
+### Clearing cached images
+
+To clear the cached open graph images you can use the following command:
+
+```bash
+php artisan open-graph-image:clear-cache
+```
+
 
 ## Changelog
 
