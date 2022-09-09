@@ -1,7 +1,9 @@
 # Laravel Open Graph dynamic images
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/vormkracht10/laravel-open-graph-image)
+[![Tests](https://github.com/vormkracht10/laravel-open-graph-image/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/vormkracht10/laravel-open-graph-image/actions/workflows/run-tests.yml)
+![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/vormkracht10/laravel-open-graph-image)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/vormkracht10/laravel-open-graph-image.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/laravel-open-graph-image)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/vormkracht10/laravel-open-graph-image/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/vormkracht10/laravel-open-graph-image/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/vormkracht10/laravel-open-graph-image.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/laravel-open-graph-image)
 
 This Laravel package enables you to dynamically create Open Graph images for your website. Just add the meta tag with our url to the head of your page.  The package will then generate the image and add it to the page. You can edit the view template which you can find in the resources folder.
