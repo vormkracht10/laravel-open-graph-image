@@ -115,18 +115,10 @@ class LaravelOpenGraphImageController
     {
         $this->ensureDirectoryExists();
 
-<<<<<<< HEAD
         $screenshot = $this->getScreenshot($html, $filename);
 
         $this->getStorageDisk()
             ->put($this->getStorageFilePath($filename), $screenshot);
-=======
-        Browsershot::html($html)
-            ->showBackground()
-            ->windowSize(config('open-graph-image.image_width'), config('open-graph-image.image_height'))
-            ->setScreenshotType(config('open-graph-image.image_type'), config('open-graph-image.image_quality'))
-            ->save($path);
->>>>>>> main
     }
 
     public function getOpenGraphImageResponse($filename)
