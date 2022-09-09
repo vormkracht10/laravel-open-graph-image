@@ -44,7 +44,8 @@ Just add the following metatag to your page.
 
 When you share the page on any social media platform, the image will be generated and added to the page. The image from the default template will look like this:
 
-- [ ] Insert image here
+![Default template](docs/open-graph-image.jpeg)
+    
 
 This component will use the 'template' blade view by default. You can change this template to your needs. It is even possible to pass more attributes than the default ones. You can find the default template in the resources folder. 
 
