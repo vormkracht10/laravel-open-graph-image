@@ -72,6 +72,17 @@ Just add this blade component into the head of your page.
 ```html
 <x-open-graph-image::metatags title="Lorem ipsum" subtitle="Dolor sit amet" />
 ```
+If you don't want to use the blade component you can also use the facade or helper method to generate the url to the image.
+
+```php
+// Facade
+use Vormkracht10\LaravelOpenGraphImage\Facades\OpenGraphImage;
+
+OpenGraphImage::url(['title' => 'Lorem ipsum', 'subtitle' => 'Dolor sit amet']);
+
+// Helper 
+og(['title' => 'Lorem ipsum', 'subtitle' => 'Dolor sit amet']);
+```
 
 When you share the page on any platform, the image will automatically be generated, cached and then shown in your post. The image from the default template will look like this:
 
@@ -79,6 +90,26 @@ When you share the page on any platform, the image will automatically be generat
     
 
 This component uses the 'template' blade view by default. You can change this template to your needs. It is even possible to pass more attributes than the default ones. You can find the default template in the resources folder. 
+
+### Passing extra attributes
+Want to add more custom attributes to modify the button text for example? Simply pass them down to the blade component, facade or helper method:
+
+```html
+<x-open-graph-image::metatags title="Lorem ipsum" subtitle="Dolor sit amet" button="Click here" />
+```
+
+```php
+// Facade
+use Vormkracht10\LaravelOpenGraphImage\Facades\OpenGraphImage;
+
+OpenGraphImage::url(['title' => 'Lorem ipsum', 'subtitle' => 'Dolor sit amet', 'button' => 'Click here']);
+
+// Helper
+og(['title' => 'Lorem ipsum', 'subtitle' => 'Dolor sit amet', 'button' => 'Click here']);
+```
+
+You can now access the variable in the `template.blade.php` by using the `{{ $button }}` variable.
+
 
 ### Clearing cached images
 
