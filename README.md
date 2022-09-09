@@ -6,11 +6,6 @@
 
 This Laravel package enables you to dynamically create Open Graph images for your website. Just add the meta tag with our url to the head of your page.  The package will then generate the image and add it to the page. You can edit the view template which you can find in the resources folder.
 
-## To Do
-
-- [ ] Command to clear open graph image cache
-
-
 ## Installation
 
 You can install the package via composer:
@@ -52,6 +47,14 @@ When you share the page on any social media platform, the image will be generate
 This component will use the 'template' blade view by default. You can change this template to your needs. It is even possible to pass more attributes than the default ones. You can find the default template in the resources folder. 
 
 All generated open graph images are cached by default. If you want to remove the cache, you can use the following command:
+
+```bash
+php artisan open-graph-image:clear-cache
+```
+
+### Clearing cached images
+
+To clear the cached open graph images you can use the following command:
 
 ```bash
 php artisan open-graph-image:clear-cache

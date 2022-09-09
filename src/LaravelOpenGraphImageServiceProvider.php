@@ -4,6 +4,7 @@ namespace Vormkracht10\LaravelOpenGraphImage;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Vormkracht10\LaravelOpenGraphImage\Commands\ClearCache;
 
 class LaravelOpenGraphImageServiceProvider extends PackageServiceProvider
 {
@@ -13,6 +14,7 @@ class LaravelOpenGraphImageServiceProvider extends PackageServiceProvider
             ->name('open-graph-image')
             ->hasRoute('web')
             ->hasConfigFile()
-            ->hasViews();
+            ->hasViews()
+            ->hasCommand(ClearCache::class);
     }
 }
