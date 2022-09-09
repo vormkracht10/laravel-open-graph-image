@@ -8,6 +8,22 @@
 
 This Laravel package enables you to dynamically create Open Graph images for your website. Just add the meta tag with our url to the head of your page. The package will then generate the image and add it to the page. You can edit the view template which you can find in the resources folder.
 
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+  * [Passing extra attributes](#passing-extra-attributes)
+  * [Clearing cached images](#clearing-cached-images)
+- [Changelog](#changelog)
+- [Contributing](#contributing)
+- [Security Vulnerabilities](#security-vulnerabilities)
+- [Credits](#credits)
+- [License](#license)
+
+## Requirements
+<ul>
+  <li>PHP 8.1+</li>
+</ul>
+
 ## Installation
 
 You can install the package via composer:
