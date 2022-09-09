@@ -70,7 +70,7 @@ return [
 Just add this blade component into the head of your page.
 
 ```html
-<x-open-graph-image::metatags title="Lorem ipsum" subtitle="Dolor sit amet" />
+<x-open-graph-image::metatags title="Vormkracht10" subtitle="Slimme websites" />
 ```
 If you don't want to use the blade component you can also use the facade or helper method to generate the url to the image.
 
@@ -78,10 +78,10 @@ If you don't want to use the blade component you can also use the facade or help
 // Facade
 use Vormkracht10\LaravelOpenGraphImage\Facades\OpenGraphImage;
 
-OpenGraphImage::url(['title' => 'Lorem ipsum', 'subtitle' => 'Dolor sit amet']);
+OpenGraphImage::url(['title' => 'Vormkracht10', 'subtitle' => 'Slimme websites']);
 
 // Helper 
-og(['title' => 'Lorem ipsum', 'subtitle' => 'Dolor sit amet']);
+og(['title' => 'Vormkracht10', 'subtitle' => 'Slimme websites']);
 ```
 
 When you share the page on any platform, the image will automatically be generated, cached and then shown in your post. The image from the default template will look like this:
@@ -95,17 +95,17 @@ This component uses the 'template' blade view by default. You can change this te
 Want to add more custom attributes to modify the button text for example? Simply pass them down to the blade component, facade or helper method:
 
 ```html
-<x-open-graph-image::metatags title="Lorem ipsum" subtitle="Dolor sit amet" button="Click here" />
+<x-open-graph-image::metatags title="Vormkracht10" subtitle="Slimme websites" button="Lees meer" />
 ```
 
 ```php
 // Facade
 use Vormkracht10\LaravelOpenGraphImage\Facades\OpenGraphImage;
 
-OpenGraphImage::url(['title' => 'Lorem ipsum', 'subtitle' => 'Dolor sit amet', 'button' => 'Click here']);
+OpenGraphImage::url(['title' => 'Vormkracht10', 'subtitle' => 'Slimme websites', 'button' => 'Lees meer']);
 
 // Helper
-og(['title' => 'Lorem ipsum', 'subtitle' => 'Dolor sit amet', 'button' => 'Click here']);
+og(['title' => 'Vormkracht10', 'subtitle' => 'Slimme websites', 'button' => 'Lees meer']);
 ```
 
 You can now access the variable in the `template.blade.php` by using the `{{ $button }}` variable.
