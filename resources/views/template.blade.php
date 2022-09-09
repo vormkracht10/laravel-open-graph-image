@@ -39,12 +39,12 @@
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="flex items-center justify-center min-h-screen">
-        <div class="bg-gray-100 w-[1200px] h-[630px] text-white p-12 border-rose-500 border-[16px] rounded-lg">
-            <h1 class="font-bold text-[90px] text-rose-500 leading-none">{!! explode(' - ', $title)[0] !!}</h1>
+        <div class="bg-[#1b2443] w-[1200px] h-[630px] text-white p-12 border-[#fe8185] border-[16px]">
+            <h1 class="font-bold text-[90px] text-[#fe8185] leading-none">{!! explode(' - ', $title)[0] !!}</h1>
             @if(isset($subtitle))
-                <h2 class="mt-6 text-[50px] font-bold text-gray-400 uppercase">{{ $subtitle }}</h2>
+                <h2 class="mt-6 text-[50px] font-bold text-white uppercase">{{ $subtitle }}</h2>
             @endif
-            <div class="inline-block px-6 py-3 mt-10 text-[30px] font-bold text-white rounded-lg bg-rose-500">Read more here</div>
+            <div class="inline-block px-6 py-3 mt-10 text-[30px] font-bold text-white rounded-lg bg-[#fe8185]">Read more here</div>
         </div>
     </body>
 </html>

@@ -75,7 +75,7 @@ Just add this blade component into the head of your page.
 
 When you share the page on any platform, the image will automatically be generated, cached and then shown in your post. The image from the default template will look like this:
 
-![Default template](docs/open-graph-image.jpeg)
+![Default template](docs/open-graph-image-template.jpeg)
     
 
 This component uses the 'template' blade view by default. You can change this template to your needs. It is even possible to pass more attributes than the default ones. You can find the default template in the resources folder. 
