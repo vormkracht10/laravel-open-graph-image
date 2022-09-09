@@ -33,21 +33,52 @@ You can optionally publish the config using:
 ```bash
 php artisan vendor:publish --tag="open-graph-image-config"
 ```
+
+This is the content of the published config file (published at `config/open-graph-image.php`):
+
+```php
+return [
+    'image' => [
+        'extension' => 'jpg',
+        'quality' => 100,
+        'width' => 1200,
+        'height' => 630,
+    ],
+
+    // The cache location to use.
+    'storage' => [
+        'disk' => 'public',
+        'path' => 'social/open-graph',
+    ],
+
+    // Whether to use the browse URL instead of the HTML input.
+    // This is slower, but makes fonts available.
+    // Alternative: http
+    'method' => 'html',
+
+    'metatags' => [
+        'og:title' => 'title',
+        'og:description' => 'description',
+        'og:type' => 'type',
+        'og:url' => 'url',
+    ],
+];
+```
     
 ## Usage
 
-Just add the following metatag to your page.
+Just add this blade component into the head of your page.
 
 ```html
 <x-open-graph-image::metatags title="Lorem ipsum" subtitle="Dolor sit amet" />
 ```
 
-When you share the page on any social media platform, the image will be generated and added to the page. The image from the default template will look like this:
+When you share the page on any platform, the image will automatically be generated, cached and then shown in your post. The image from the default template will look like this:
 
 ![Default template](docs/open-graph-image.jpeg)
     
 
-This component will use the 'template' blade view by default. You can change this template to your needs. It is even possible to pass more attributes than the default ones. You can find the default template in the resources folder. 
+This component uses the 'template' blade view by default. You can change this template to your needs. It is even possible to pass more attributes than the default ones. You can find the default template in the resources folder. 
 
 ### Clearing cached images
 
