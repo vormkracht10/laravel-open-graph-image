@@ -1,4 +1,4 @@
-# Laravel Open Graph Images (Dynamic)
+# Generate Dynamic Open Graph Images in Laravel
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/vormkracht10/laravel-open-graph-image)
 [![Tests](https://github.com/vormkracht10/laravel-open-graph-image/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/vormkracht10/laravel-open-graph-image/actions/workflows/run-tests.yml)
