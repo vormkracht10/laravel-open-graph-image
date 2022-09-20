@@ -6,7 +6,9 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/vormkracht10/laravel-open-graph-image.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/laravel-open-graph-image)
 [![Total Downloads](https://img.shields.io/packagist/dt/vormkracht10/laravel-open-graph-image.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/laravel-open-graph-image)
 
-This Laravel package enables you to dynamically create Open Graph images for your website. Just add the meta tag with our url to the head of your page. The package will then generate the image and add it to the page. You can edit the view template which you can find in the resources folder.
+This Laravel package enables you to dynamically create Open Graph images for your website based on a single HTML Blade view. So designing a dynamic Open Graph Image as a developer just got very easy using this package!
+
+Just add the meta tag with our url to the head of your page. The package will then generate the image and add it to the page. You can edit the view template which you can find in the resources folder.
 
 - [Requirements](#requirements)
 - [Installation](#installation)
