@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-open-graph-image` will be documented in this file.
 
+## v0.1.1 - 2022-11-23
+
+- Added `noSandbox()` to BrowserShot
+
 ## v0.1.0 - 2022-09-09
 
 ### What's Changed
