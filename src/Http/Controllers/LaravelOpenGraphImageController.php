@@ -105,6 +105,7 @@ class LaravelOpenGraphImageController
     public function getScreenshot($html, $filename)
     {
         return Browsershot::html($html)
+            ->noSandbox()
             ->showBackground()
             ->windowSize($this->imageWidth, $this->imageHeight)
             ->setScreenshotType($this->getImageType(), $this->imageQuality)
