@@ -20,6 +20,7 @@ class LaravelOpenGraphImageServiceProvider extends PackageServiceProvider
             ->hasInstallCommand(function(InstallCommand $command) {
                 $command
                     ->publishConfigFile()
+                    ->publishViews()
                     ->askToStarRepoOnGitHub('vormkracht10/laravel-open-graph-image');
             });
     }

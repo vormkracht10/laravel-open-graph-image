@@ -10,18 +10,19 @@ This Laravel package enables you to dynamically create Open Graph images for you
 
 Just add the meta tag with our url to the head of your page. The package will then generate the image and add it to the page. You can edit the view template which you can find in the resources folder.
 
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-  * [Passing extra attributes](#passing-extra-attributes)
-  * [Clearing cached images](#clearing-cached-images)
-- [Changelog](#changelog)
-- [Contributing](#contributing)
-- [Security Vulnerabilities](#security-vulnerabilities)
-- [Credits](#credits)
-- [License](#license)
+-   [Requirements](#requirements)
+-   [Installation](#installation)
+-   [Usage](#usage)
+    -   [Passing extra attributes](#passing-extra-attributes)
+    -   [Clearing cached images](#clearing-cached-images)
+-   [Changelog](#changelog)
+-   [Contributing](#contributing)
+-   [Security Vulnerabilities](#security-vulnerabilities)
+-   [Credits](#credits)
+-   [License](#license)
 
 ## Requirements
+
 <ul>
   <li>PHP 8.1+</li>
 </ul>
@@ -35,21 +36,15 @@ composer require vormkracht10/laravel-open-graph-image
 ```
 
 Then you should install puppeteer:
-    
+
 ```bash
 npm install puppeteer
 ```
 
-You should publish the views using:
+Run the command to install the package:
 
 ```bash
-php artisan vendor:publish --tag="open-graph-image-views"
-```
-
-You can optionally publish the config using:
-
-```bash
-php artisan vendor:publish --tag="open-graph-image-config"
+php artisan open-graph-image:install
 ```
 
 This is the content of the published config file (published at `config/open-graph-image.php`):
@@ -82,7 +77,7 @@ return [
     ],
 ];
 ```
-    
+
 ## Usage
 
 Just add this blade component into the head of your page.
@@ -90,6 +85,7 @@ Just add this blade component into the head of your page.
 ```html
 <x-open-graph-image::metatags title="Vormkracht10" subtitle="Slimme websites" />
 ```
+
 If you don't want to use the blade component you can also use the facade or helper method to generate the url to the image.
 
 ```php
@@ -98,22 +94,26 @@ use Vormkracht10\LaravelOpenGraphImage\Facades\OpenGraphImage;
 
 OpenGraphImage::url(['title' => 'Vormkracht10', 'subtitle' => 'Slimme websites']);
 
-// Helper 
+// Helper
 og(['title' => 'Vormkracht10', 'subtitle' => 'Slimme websites']);
 ```
 
 When you share the page on any platform, the image will automatically be generated, cached and then shown in your post. The image from the default template will look like this:
 
 ![Default template](docs/open-graph-image-template.jpeg)
-    
 
-This component uses the 'template' blade view by default. You can change this template to your needs. It is even possible to pass more attributes than the default ones. You can find the default template in the resources folder. 
+This component uses the 'template' blade view by default. You can change this template to your needs. It is even possible to pass more attributes than the default ones. You can find the default template in the resources folder.
 
 ### Passing extra attributes
+
 Want to add more custom attributes to modify the button text for example? Simply pass them down to the blade component, facade or helper method:
 
 ```html
-<x-open-graph-image::metatags title="Vormkracht10" subtitle="Slimme websites" button="Lees meer" />
+<x-open-graph-image::metatags
+    title="Vormkracht10"
+    subtitle="Slimme websites"
+    button="Lees meer"
+/>
 ```
 
 ```php
@@ -128,7 +128,6 @@ og(['title' => 'Vormkracht10', 'subtitle' => 'Slimme websites', 'button' => 'Lee
 
 You can now access the variable in the `template.blade.php` by using the `{{ $button }}` variable.
 
-
 ### Clearing cached images
 
 All generated open graph images are cached by default. If you want to remove the cache, you can use the following command:
@@ -136,7 +135,6 @@ All generated open graph images are cached by default. If you want to remove the
 ```bash
 php artisan open-graph-image:clear-cache
 ```
-
 
 ## Changelog
 
@@ -152,9 +150,9 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Bas van Dinther](https://github.com/baspa)
-- [Mark van Eijk](https://github.com/markvaneijk)
-- [All Contributors](../../contributors)
+-   [Bas van Dinther](https://github.com/baspa)
+-   [Mark van Eijk](https://github.com/markvaneijk)
+-   [All Contributors](../../contributors)
 
 ## License
 
