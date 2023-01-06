@@ -2,9 +2,9 @@
 
 namespace Vormkracht10\LaravelOpenGraphImage;
 
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Vormkracht10\LaravelOpenGraphImage\Commands\ClearCache;
 
 class LaravelOpenGraphImageServiceProvider extends PackageServiceProvider
@@ -17,7 +17,7 @@ class LaravelOpenGraphImageServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasCommand(ClearCache::class)
-            ->hasInstallCommand(function(InstallCommand $command) {
+            ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
                     ->askToStarRepoOnGitHub('vormkracht10/laravel-open-graph-image');
