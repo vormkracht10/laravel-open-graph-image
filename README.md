@@ -47,6 +47,12 @@ Run the command to install the package:
 php artisan open-graph-image:install
 ```
 
+You should also publish the views:
+
+```bash
+php artisan vendor:publish --tag="open-graph-image-views"
+```
+
 This is the content of the published config file (published at `config/open-graph-image.php`):
 
 ```php
