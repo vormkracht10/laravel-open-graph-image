@@ -6,7 +6,7 @@ class OpenGraphImage
 {
     public function url(...$parameters)
     {
-        $parameters = collect($parameters);
+        $parameters = collect($parameters)
             ->merge(['.'.config('open-graph-image.image.extension')]) // add image extension to url for twitter compatibility
             ->all();
 
