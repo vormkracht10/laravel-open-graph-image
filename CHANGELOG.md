@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-open-graph-image` will be documented in this file.
 
+## v0.2.1 - 2023-01-21
+
+- Make sure parameters given as ComponentAttributeBag converts to an array
+
 ## v0.2.0 - 2023-01-21
 
 - Added image file extension to the end of the Open Graph Image URL for compatibility with Twitter
