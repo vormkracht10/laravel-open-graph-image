@@ -13,7 +13,7 @@ class OpenGraphImage
 
     public function url(array|ComponentAttributeBag $parameters): string
     {
-        if($parameters instanceof ComponentAttributeBag) {
+        if ($parameters instanceof ComponentAttributeBag) {
             $parameters = $this->transformAttributeBagToArray($parameters);
         }
 
