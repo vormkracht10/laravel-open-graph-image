@@ -2,7 +2,7 @@
 
 All notable changes to `laravel-open-graph-image` will be documented in this file.
 
-## v0.2.0
+## v0.2.0 - 2023-01-21
 
 - Added image file extension to the end of the Open Graph Image URL for compatibility with Twitter
 
