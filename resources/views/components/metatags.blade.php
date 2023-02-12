@@ -3,7 +3,8 @@
     <meta property="{{ $property }}" content="{{ $attributes->get($key) }}">
     @endif
 @endforeach
-<meta property="og:image" content="{!! url()->signedRoute('open-graph-image.file', collect($attributes)->all()) . '&.' . config('open-graph-image.image.extension') !!}">
+
+<meta property="og:image" content="{!! og($attributes) !!}">
 <meta property="og:image:type" content="image/{{ config('open-graph-image.image.extension') }}">
 <meta property="og:image:width" content="{{ config('open-graph-image.image.width') }}">
 <meta property="og:image:height" content="{{ config('open-graph-image.image.height') }}">
