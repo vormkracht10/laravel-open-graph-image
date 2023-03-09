@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-open-graph-image` will be documented in this file.
 
+## v0.3.0 - 2023-03-09
+
+### What’s changed
+
+- Laravel 10 support
+
+**Full Changelog**: https://github.com/vormkracht10/laravel-open-graph-image/compare/v0.2.0...v0.3.0
+
 ## v0.2.1 - 2023-01-21
 
 - Make sure parameters given as ComponentAttributeBag converts to an array
