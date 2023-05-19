@@ -44,7 +44,11 @@
             @if(isset($subtitle))
                 <h2 class="mt-6 text-[50px] font-bold text-white uppercase">{{ $subtitle }}</h2>
             @endif
-            <div class="inline-block px-6 py-3 mt-10 text-[30px] font-bold text-white rounded-lg bg-[#fe8185]">Read more here</div>
+            @if (isset($button))
+                <div class="inline-block px-6 py-3 mt-10 text-[30px] font-bold text-white rounded-lg bg-[#fe8185]">
+                    {{ $button }}
+                </div>
+            @endif
         </div>
     </body>
 </html>
