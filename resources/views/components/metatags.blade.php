@@ -8,3 +8,6 @@
 <meta property="og:image:type" content="image/{{ config('open-graph-image.image.extension') }}">
 <meta property="og:image:width" content="{{ config('open-graph-image.image.width') }}">
 <meta property="og:image:height" content="{{ config('open-graph-image.image.height') }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{!! og($attributes) !!}">
