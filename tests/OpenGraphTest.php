@@ -10,4 +10,3 @@ it('can generate an image using params', function () {
 
     expect($image)->toBeString();
 });
-
