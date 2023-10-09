@@ -134,6 +134,16 @@ og(['title' => 'Vormkracht10', 'subtitle' => 'Slimme websites', 'button' => 'Lee
 
 You can now access the variable in the `template.blade.php` by using the `{{ $button }}` variable.
 
+### Generate image without using the blade component
+
+When you need to generate the image without using the blade component, you can use the following method:
+
+```php
+OpenGraphImage::generate(['title' => 'Vormkracht10', 'subtitle' => 'Slimme websites']);
+```
+
+This will return the actual image from your configured storage. You can use this method to generate the image in your own controller for example.
+
 ### Clearing cached images
 
 All generated open graph images are cached by default. If you want to remove the cache, you can use the following command:
