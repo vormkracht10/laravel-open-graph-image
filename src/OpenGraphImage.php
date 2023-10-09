@@ -3,9 +3,9 @@
 namespace Vormkracht10\LaravelOpenGraphImage;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
 use Illuminate\View\ComponentAttributeBag;
 use Vormkracht10\LaravelOpenGraphImage\Http\Controllers\LaravelOpenGraphImageController;
-use Illuminate\Support\Facades\View;
 
 class OpenGraphImage
 {
