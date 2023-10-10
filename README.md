@@ -139,7 +139,7 @@ You can now access the variable in the `template.blade.php` by using the `{{ $bu
 When you need to generate the image without using the blade component, you can use the following method:
 
 ```php
-OpenGraphImage::generate(['title' => 'Vormkracht10', 'subtitle' => 'Slimme websites']);
+OpenGraphImage::createImageFromParams(['title' => 'Vormkracht10', 'subtitle' => 'Slimme websites']);
 ```
 
 This will return the actual image from your configured storage. You can use this method to generate the image in your own controller for example.
