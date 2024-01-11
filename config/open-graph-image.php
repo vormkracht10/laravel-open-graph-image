@@ -25,4 +25,11 @@ return [
         'og:type' => 'type',
         'og:url' => 'url',
     ],
+
+    // set custom paths for node and npm binaries for puppeteer
+    // leave empty to resolve using default paths
+    'paths' => [
+        'node' => env('NODE_PATH'),
+        'npm' => env('NPM_PATH'),
+    ],
 ];
