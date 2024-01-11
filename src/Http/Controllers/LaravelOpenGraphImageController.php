@@ -104,12 +104,22 @@ class LaravelOpenGraphImageController
 
     public function getScreenshot($html, $filename)
     {
-        return Browsershot::html($html)
+        $browsershot = Browsershot::html($html)
             ->noSandbox()
             ->showBackground()
             ->windowSize($this->imageWidth, $this->imageHeight)
             ->setScreenshotType($this->getImageType(), $this->imageQuality)
             ->screenshot($this->getStorageFilePath($filename));
+
+        if(config('open-graph-image.paths.node')) {
+            $browsershot = $browsershot->setNodeBinary(config('open-graph-image.paths.node'));
+        }
+        
+        if(config('open-graph-image.paths.npm')) {
+            $browsershot = $browsershot->setNpmBinary(config('open-graph-image.paths.npm'));
+        }
+
+        return $browsershot;
     }
 
     public function saveOpenGraphImage($html, $filename)
