@@ -37,7 +37,7 @@ class LaravelOpenGraphImageController
 
     public function __invoke(Request $request)
     {
-        if (!app()->environment('local') && !$request->hasValidSignature()) {
+        if (! app()->environment('local') && ! $request->hasValidSignature()) {
             abort(403);
         }
 
@@ -48,7 +48,7 @@ class LaravelOpenGraphImageController
             return $html;
         }
 
-        if (!$this->getStorageFileExists($request->signature)) {
+        if (! $this->getStorageFileExists($request->signature)) {
             $this->saveOpenGraphImage($html, $request->signature);
         }
 
@@ -67,12 +67,12 @@ class LaravelOpenGraphImageController
 
     public function getStorageFileName($signature)
     {
-        return $signature . '.' . $this->imageExtension;
+        return $signature.'.'.$this->imageExtension;
     }
 
     public function getStorageFilePath($filename)
     {
-        return $this->getStoragePath() . '/' . $this->getStorageFileName($filename);
+        return $this->getStoragePath().'/'.$this->getStorageFileName($filename);
     }
 
     public function getStorageFileData($filename)
@@ -97,7 +97,7 @@ class LaravelOpenGraphImageController
 
     public function ensureDirectoryExists()
     {
-        if (!File::isDirectory($this->getStoragePath())) {
+        if (! File::isDirectory($this->getStoragePath())) {
             File::makeDirectory($this->getStoragePath(), 0777, true);
         }
     }
@@ -135,7 +135,7 @@ class LaravelOpenGraphImageController
     public function getOpenGraphImageResponse($filename)
     {
         return response($this->getStorageFileData($filename), 200, [
-            'Content-Type' => 'image/' . $this->getImageType(),
+            'Content-Type' => 'image/'.$this->getImageType(),
         ]);
     }
 }
