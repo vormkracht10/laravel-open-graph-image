@@ -3,7 +3,6 @@
 namespace Vormkracht10\LaravelOpenGraphImage\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use Spatie\Browsershot\Browsershot;
@@ -97,12 +96,12 @@ class LaravelOpenGraphImageController
 
     public function ensureDirectoryExists()
     {
-        if (! File::isDirectory($this->getStoragePath())) {
-            File::makeDirectory($this->getStoragePath(), 0777, true);
+        if (! $this->getStorageDisk()->exists($this->getStoragePath())) {
+            $this->getStorageDisk()->makeDirectory($this->getStoragePath());
         }
     }
 
-    public function getScreenshot($html, $filename)
+    public function getScreenshot($html)
     {
         $browsershot = Browsershot::html($html)
             ->noSandbox()
@@ -118,15 +117,14 @@ class LaravelOpenGraphImageController
             $browsershot = $browsershot->setNpmBinary(config('open-graph-image.paths.npm'));
         }
 
-        return $browsershot
-            ->screenshot($this->getStorageFilePath($filename));
+        return $browsershot->screenshot();
     }
 
     public function saveOpenGraphImage($html, $filename)
     {
         $this->ensureDirectoryExists();
 
-        $screenshot = $this->getScreenshot($html, $filename);
+        $screenshot = $this->getScreenshot($html);
 
         $this->getStorageDisk()
             ->put($this->getStorageFilePath($filename), $screenshot);
