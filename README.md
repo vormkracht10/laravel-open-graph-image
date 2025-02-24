@@ -24,7 +24,7 @@ Just add the meta tag with our url to the head of your page. The package will th
 ## Requirements
 
 <ul>
-  <li>PHP 8.1+</li>
+  <li>PHP 8.2+</li>
 </ul>
 
 ## Installation
@@ -35,19 +35,26 @@ You can install the package via composer:
 composer require vormkracht10/laravel-open-graph-image
 ```
 
-Then you should install puppeteer:
-
-```bash
-npm install puppeteer
-```
-
 Run the command to install the package:
 
 ```bash
 php artisan open-graph-image:install
 ```
 
-You should also publish the views:
+Then you should install puppeteer:
+
+```bash
+npm install puppeteer
+```
+
+And make sure Puppeteer can find the correct node and npm versions on your computer or server. When it can't find node or npm, add the custom paths using these .env variables. You can use `which node` and `which npm` to find the correct paths to these binaries:
+
+```
+NODE_PATH="" // fill in output of `which node`
+NPM_PATH="" // fill in output of `which npm`
+```
+
+You should also publish the views, to change the design of your Open Graph Images:
 
 ```bash
 php artisan vendor:publish --tag="open-graph-image-views"
