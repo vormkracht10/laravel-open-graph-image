@@ -24,7 +24,7 @@ Just add the meta tag with our url to the head of your page. The package will th
 ## Requirements
 
 <ul>
-  <li>PHP 8.1+</li>
+  <li>PHP 8.2+</li>
 </ul>
 
 ## Installation
