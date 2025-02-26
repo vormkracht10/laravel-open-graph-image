@@ -1,6 +1,6 @@
 <?php
 
-use Vormkracht10\LaravelOpenGraphImage\Facades\OpenGraphImage;
+use Backstage\LaravelOpenGraphImage\Facades\OpenGraphImage;
 
 if (! function_exists('og')) {
     function og(...$args): string
