@@ -1,26 +1,29 @@
 {
-  "name": "vormkracht10/laravel-open-graph-image",
-  "description": "A Laravel package to generate dynamic Open Graph images",
-  "keywords": ["vormkracht10", "laravel", "laravel-open-graph-image"],
-  "homepage": "https://github.com/vormkracht10/laravel-open-graph-image",
+  "name": "backstagephp/laravel-og-image",
+  "description": "Laravel package to generate dynamic Open Graph images",
+  "keywords": ["backstage", "vormkracht10", "php", "laravel", "open-graph-image", "og-image", "open-graph"],
+  "homepage": "https://github.com/backstagephp/laravel-og-image",
   "license": "MIT",
-  "authors": [
+  "authors": [{
+        "name": "Bas van Dinther",
+        "email": "bas@backstagephp.com",
+        "role": "Developer"
+    },
     {
-      "name": "Bas van Dinther",
-      "email": "bas@vormkracht10.nl",
-      "role": "Developer"
-    }
-  ],
+        "name": "Mark van Eijk",
+        "email": "bas@backstagephp.com",
+        "role": "Developer"
+  }],
   "require": {
     "php": "^8.1",
-    "illuminate/contracts": "^9.0|^10.0|^11.0",
+    "illuminate/contracts": "^9.0|^10.0|^11.0|^12.0",
     "spatie/browsershot": "^3.0|^4.0",
     "spatie/laravel-package-tools": "^1.14"
   },
   "require-dev": {
     "laravel/pint": "^1.0",
     "nunomaduro/collision": "^7.0|^8.0",
-    "nunomaduro/larastan": "^2.0.1",
+    "larastan/larastan": "^2.0.1",
     "orchestra/testbench": "^8.0|^9.0",
     "pestphp/pest": "^2.34",
     "pestphp/pest-plugin-laravel": "^2.2",
@@ -32,14 +35,14 @@
   },
   "autoload": {
     "psr-4": {
-      "Vormkracht10\\LaravelOpenGraphImage\\": "src",
-      "Vormkracht10\\LaravelOpenGraphImage\\Database\\Factories\\": "database/factories"
+      "Backstage\\LaravelOpenGraphImage\\": "src",
+      "Backstage\\LaravelOpenGraphImage\\Database\\Factories\\": "database/factories"
     },
     "files": ["src/helpers.php"]
   },
   "autoload-dev": {
     "psr-4": {
-      "Vormkracht10\\LaravelOpenGraphImage\\Tests\\": "tests"
+      "Backstage\\LaravelOpenGraphImage\\Tests\\": "tests"
     }
   },
   "scripts": {
@@ -58,10 +61,10 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Vormkracht10\\LaravelOpenGraphImage\\LaravelOpenGraphImageServiceProvider"
+        "Backstage\\LaravelOpenGraphImage\\LaravelOpenGraphImageServiceProvider"
       ],
       "aliases": {
-        "LaravelOpenGraphImage": "Vormkracht10\\LaravelOpenGraphImage\\Facades\\LaravelOpenGraphImage"
+        "LaravelOpenGraphImage": "Backstage\\LaravelOpenGraphImage\\Facades\\LaravelOpenGraphImage"
       }
     }
   },

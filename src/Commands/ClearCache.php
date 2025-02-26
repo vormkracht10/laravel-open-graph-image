@@ -1,6 +1,6 @@
 <?php
 
-namespace Vormkracht10\LaravelOpenGraphImage\Commands;
+namespace Backstage\LaravelOpenGraphImage\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
@@ -18,6 +18,7 @@ class ClearCache extends Command
     public function __construct()
     {
         parent::__construct();
+
         $this->storageDisk = config('open-graph-image.storage.disk');
         $this->storagePath = config('open-graph-image.storage.path');
     }

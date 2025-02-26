@@ -1,6 +1,6 @@
 <?php
 
-use Vormkracht10\LaravelOpenGraphImage\Facades\OpenGraphImage;
+use Backstage\LaravelOpenGraphImage\Facades\OpenGraphImage;
 
 it('can generate an image using params', function () {
 
