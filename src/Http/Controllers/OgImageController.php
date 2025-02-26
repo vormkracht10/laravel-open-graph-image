@@ -2,11 +2,9 @@
 
 namespace Backstage\OgImage\Laravel\Http\Controllers;
 
+use Backstage\OgImage\Laravel\Facades\OgImage;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\View;
-use Spatie\Browsershot\Browsershot;
-use Backstage\OgImage\Laravel\Facades\OgImage;
 
 class OgImageController
 {

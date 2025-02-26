@@ -2,12 +2,12 @@
 
 namespace Backstage\OgImage\Laravel;
 
+use Backstage\OgImage\Laravel\Commands\ClearCache;
+use Backstage\OgImage\Laravel\View\Components\OgImageComponent;
 use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Backstage\OgImage\Laravel\Commands\ClearCache;
-use Backstage\OgImage\Laravel\View\Components\OgImageComponent;
 
 class OgImageServiceProvider extends PackageServiceProvider
 {

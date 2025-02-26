@@ -2,48 +2,48 @@
 
 namespace Backstage\OgImage\Laravel;
 
+use HeadlessChromium\BrowserFactory;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Spatie\Browsershot\Browsershot;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
 use Illuminate\View\ComponentAttributeBag;
-use Illuminate\Filesystem\FilesystemAdapter;
 
 class OgImage
 {
-    public function imageExtension()
+    public function imageExtension(): string
     {
         return config('og-image.extension');
     }
 
-    public function imageQuality()
+    public function imageQuality(): int
     {
         return config('og-image.quality');
     }
 
-    public function imageWidth()
+    public function imageWidth(): int
     {
         return config('og-image.width');
     }
 
-    public function imageHeight()
+    public function imageHeight(): int
     {
         return config('og-image.height');
     }
 
-    public function storageDisk()
+    public function storageDisk(): string
     {
         return config('og-image.storage.disk');
     }
 
-    public function storagePath($folder = null)
+    public function storagePath($folder = null): string
     {
         return rtrim(config('og-image.storage.path')).($folder ? '/'.$folder : '');
     }
 
-    public function method()
+    public function method(): string
     {
         return config('og-image.method');
     }
@@ -53,64 +53,56 @@ class OgImage
         return Storage::disk($this->storageDisk());
     }
 
-    public function getStoragePath($folder = null)
+    public function getStoragePath(?string $folder = null): string
     {
         return rtrim($this->storagePath($folder), '/');
     }
 
-    public function getStorageImageFileName($signature)
+    public function getStorageImageFileName(string $signature): string
     {
         return $signature.'.'.$this->imageExtension();
     }
 
-    public function getStorageImageFilePath($signature)
+    public function getStorageImageFilePath(string $signature): string
     {
         return $this->getStoragePath('images').'/'.$this->getStorageImageFileName($signature);
     }
 
-    public function getStorageImageFileExists($signature)
+    public function getStorageImageFileExists(string $signature): string
     {
         return $this->getStorageDisk()
             ->exists($this->getStorageImageFilePath($signature));
     }
 
-    public function getStorageImageFileData($signature)
+    public function getStorageImageFileData(string $signature): string
     {
         return $this->getStorageDisk()
             ->get($this->getStorageImageFilePath($signature));
     }
 
-    public function getStorageViewFileName($signature)
+    public function getStorageViewFileName(string $signature): string
     {
         return $signature.'.blade.php';
     }
 
-    public function getStorageViewFilePath($signature, $folder = null)
+    public function getStorageViewFilePath(string $signature, ?string $folder = null): string
     {
         return $this->getStoragePath('views').'/'.$this->getStorageViewFileName($signature);
     }
 
-    public function getStorageViewFileData($signature)
+    public function getStorageViewFileData(string $signature): string
     {
         return $this->getStorageDisk()
             ->get($this->getStorageViewFilePath($signature));
     }
 
-    public function getStorageViewFileExists($signature)
+    public function getStorageViewFileExists(string $signature): bool
     {
         return $this->getStorageDisk()
             ->exists($this->getStorageViewFilePath($signature));
     }
 
-    public function getImageMimeType()
-    {
-        return match ($this->imageExtension()) {
-            'jpg' => 'image/jpeg',
-            default => 'image/'.$this->imageExtension(),
-        };
-    }
-
-    public function ensureDirectoryExists($folder = '')
+    public function ensureDirectoryExists(string $folder = ''): string
     {
         if (! File::isDirectory($this->getStoragePath($folder))) {
             File::makeDirectory($this->getStoragePath($folder), 0777, true);
@@ -182,21 +174,56 @@ class OgImage
 
     public function getScreenshot(string $html, string $filename): string
     {
-        $browsershot = Browsershot::html($html)
-            ->noSandbox()
-            ->showBackground()
-            ->windowSize(OgImage::imageWidth(), OgImage::imageHeight())
-            ->setScreenshotType(OgImage::getImageMimeType(), OgImage::imageQuality());
+        $binary = (string) config('og-image.chrome.binary');
 
-        if (config('og-image.paths.node')) {
-            $browsershot = $browsershot->setNodeBinary(config('og-image.paths.node'));
-        }
+        $browser = (new BrowserFactory($binary))
+            ->createBrowser([
+                'noSandbox' => true,
+                'ignoreCertificateErrors' => true,
+                'customFlags' => config('og-image.chrome.flags'),
+            ]);
+        
+        $screenshot =$browser->createPage()
+            ->setHtml($html, eventName: 'og-image')
+            ->evaluate($this->injectJs())
+            ->setViewport(OgImage::imageWidth(), OgImage::imageHeight())
+            ->screenshot();
 
-        if (config('og-image.paths.npm')) {
-            $browsershot = $browsershot->setNpmBinary(config('og-image.paths.npm'));
-        }
+        $browser->close();
 
-        return $browsershot->screenshot(OgImage::getStorageImageFilePath($filename));
+        dd($screenshot);
+    }
+
+    private function injectJs(): string
+    {
+        // Wait until all images and fonts have loaded
+        // Taken from: https://github.com/svycal/og-image/blob/main/priv/js/take-screenshot.js#L42C5-L63
+        // See: https://github.blog/2021-06-22-framework-building-open-graph-images/#some-performance-gotchas
+
+        return <<<'JS'
+            const selectors = Array.from(document.querySelectorAll('img'));
+
+            await Promise.all([
+                document.fonts.ready,
+                    ...selectors.map((img) => {
+                        // Image has already finished loading, let’s see if it worked
+
+                        if (img.complete) {
+                            // Image loaded and has presence
+                            if (img.naturalHeight !== 0) return;
+                        
+                            // Image failed, so it has no height
+                            throw new Error("Image failed to load");
+                        }
+
+                        // Image hasn’t loaded yet, added an event listener to know when it does
+                        return new Promise((resolve, reject) => {
+                            img.addEventListener("load", resolve);
+                            img.addEventListener("error", reject);
+                        });
+                    })
+                ]);
+        JS;
     }
 
     public function getResponse(Request $request): Response
@@ -210,13 +237,12 @@ class OgImage
 
     public function generateImage($request)
     {
-        if($request->view && view()->exists($request->view)) {
+        if ($request->view && view()->exists($request->view)) {
             $html = View::make($request->view, $request->all())
                 ->render();
-        } else if(OgImage::getStorageViewFileExists($request->signature)) {
+        } elseif (OgImage::getStorageViewFileExists($request->signature)) {
             $html = OgImage::getStorageViewFileData($request->signature);
-        }
-        else {
+        } else {
             $html = View::make('og-image::template', $request->all())
                 ->render();
         }

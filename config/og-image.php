@@ -1,10 +1,15 @@
 <?php
 
 return [
-    'extension' => 'jpg',
+    'format' => 'jpg', // jpg, png, webp
     'quality' => 100,
     'width' => 1200,
     'height' => 630,
+
+    'chrome' => [
+        'binary' => '/usr/bin/google-chrome-stable',
+        'flags' => [],
+    ],
 
     // The cache location to use.
     'storage' => [
