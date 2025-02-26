@@ -15,37 +15,37 @@ class OpenGraphImage
 {
     public function imageExtension()
     {
-        return config('open-graph-image.image.extension');
+        return config('og-image.image.extension');
     }
 
     public function imageQuality()
     {
-        return config('open-graph-image.image.quality');
+        return config('og-image.image.quality');
     }
 
     public function imageWidth()
     {
-        return config('open-graph-image.image.width');
+        return config('og-image.image.width');
     }
 
     public function imageHeight()
     {
-        return config('open-graph-image.image.height');
+        return config('og-image.image.height');
     }
 
     public function storageDisk()
     {
-        return config('open-graph-image.storage.disk');
+        return config('og-image.storage.disk');
     }
 
     public function storagePath($folder = null)
     {
-        return rtrim(config('open-graph-image.storage.path')).($folder ? '/'.$folder : '');
+        return rtrim(config('og-image.storage.path')).($folder ? '/'.$folder : '');
     }
 
     public function method()
     {
-        return config('open-graph-image.method');
+        return config('og-image.method');
     }
 
     public function getStorageDisk(): FilesystemAdapter
@@ -129,11 +129,11 @@ class OpenGraphImage
         }
 
         $parameters = collect($parameters)
-            ->merge(['.'.config('open-graph-image.image.extension')]) // add image extension to url for twitter compatibility
+            ->merge(['.'.config('og-image.image.extension')]) // add image extension to url for twitter compatibility
             ->all();
 
         return url()
-            ->signedRoute('open-graph-image.file', $parameters);
+            ->signedRoute('og-image.file', $parameters);
     }
 
     public function getSignature(array|ComponentAttributeBag $parameters): string
@@ -156,13 +156,13 @@ class OpenGraphImage
         $signature = $this->getSignature($parameters);
 
         if (! OpenGraphImage::getStorageImageFileExists($signature)) {
-            $html = View::make('open-graph-image::template', $parameters)
+            $html = View::make('og-image::template', $parameters)
                 ->render();
 
             OpenGraphImage::saveImage($html, $signature);
         }
 
-        return Storage::disk(config('open-graph-image.storage.disk'))
+        return Storage::disk(config('og-image.storage.disk'))
             ->get(OpenGraphImage::getStorageImageFilePath($signature));
     }
 
@@ -188,12 +188,12 @@ class OpenGraphImage
             ->windowSize(OpenGraphImage::imageWidth(), OpenGraphImage::imageHeight())
             ->setScreenshotType(OpenGraphImage::getImageMimeType(), OpenGraphImage::imageQuality());
 
-        if (config('open-graph-image.paths.node')) {
-            $browsershot = $browsershot->setNodeBinary(config('open-graph-image.paths.node'));
+        if (config('og-image.paths.node')) {
+            $browsershot = $browsershot->setNodeBinary(config('og-image.paths.node'));
         }
 
-        if (config('open-graph-image.paths.npm')) {
-            $browsershot = $browsershot->setNpmBinary(config('open-graph-image.paths.npm'));
+        if (config('og-image.paths.npm')) {
+            $browsershot = $browsershot->setNpmBinary(config('og-image.paths.npm'));
         }
 
         return $browsershot->screenshot(OpenGraphImage::getStorageImageFilePath($filename));
@@ -217,11 +217,11 @@ class OpenGraphImage
             $html = OpenGraphImage::getStorageViewFileData($request->signature);
         }
         else {
-            $html = View::make('open-graph-image::template', $request->all())
+            $html = View::make('og-image::template', $request->all())
                 ->render();
         }
 
-        if ($request->route()->getName() == 'open-graph-image') {
+        if ($request->route()->getName() == 'og-image') {
             return $html;
         }
 

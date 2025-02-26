@@ -38,7 +38,7 @@ composer require backstage/laravel-og-image
 Run the command to install the package:
 
 ```bash
-php artisan open-graph-image:install
+php artisan og-image:install
 ```
 
 Then you should install puppeteer:
@@ -57,10 +57,10 @@ NPM_PATH="..." // fill in output of `which npm`
 You should also publish the views, to change the default layout of your Open Graph Images:
 
 ```bash
-php artisan vendor:publish --tag="open-graph-image-views"
+php artisan vendor:publish --tag="og-image-views"
 ```
 
-This is the content of the published config file (published at `config/open-graph-image.php`):
+This is the content of the published config file (published at `config/og-image.php`):
 
 ```php
 return [
@@ -96,24 +96,24 @@ return [
 Add the blade component into the head of your page. Providing the attributes you need in your view file:
 
 ```html
-<x-open-graph-image title="Backstage" subtitle="" />
+<x-og-image title="Backstage" subtitle="" />
 ```
 
 If you want to use a different view than the default, add a `view` attribute with the path using dot or slash notation:
 
 ```html
-<x-open-graph-image title="Backstage" subtitle="" view="path.to.view.file" />
+<x-og-image title="Backstage" subtitle="" view="path.to.view.file" />
 ```
 
 If you do not want to use a view but HTML directly in your view file, than you can use the slot to add the HTML to:
 
 > [!NOTE]
-> If you're using this option, make sure to clear caches before adding or changing the HTML using `php artisan open-graph-image:clear` to see the result in your browser.
+> If you're using this option, make sure to clear caches before adding or changing the HTML using `php artisan og-image:clear` to see the result in your browser.
 
 ```html
-<x-open-graph-image title="Backstage" subtitle="" view="path.to.view.file">
+<x-og-image title="Backstage" subtitle="" view="path.to.view.file">
     <h1>Use this HTML and inline CSS to style the open graph image...</h1>
-</x-open-graph-image>
+</x-og-image>
 ```
 
 If you don't want to use the blade component you can also use the facade or helper method to generate the url to the image.
@@ -132,14 +132,14 @@ And add it like this to your Blade file:
 
 ```html
 <meta property="og:image" content="{!! $url !!}">
-<meta property="og:image:type" content="image/{{ config('open-graph-image.image.extension') }}">
-<meta property="og:image:width" content="{{ config('open-graph-image.image.width') }}">
-<meta property="og:image:height" content="{{ config('open-graph-image.image.height') }}">
+<meta property="og:image:type" content="image/{{ config('og-image.image.extension') }}">
+<meta property="og:image:width" content="{{ config('og-image.image.width') }}">
+<meta property="og:image:height" content="{{ config('og-image.image.height') }}">
 ```
 
 When you share the page on any platform, the image will automatically be generated, cached and then shown in your post. The image from the default template will look like this:
 
-![Default template](docs/open-graph-image-template.jpeg)
+![Default template](docs/og-image-template.jpeg)
 
 This component uses the 'template' blade view by default. You can change this template to your needs. It is even possible to pass more attributes than the default ones. You can find the default template in the resources folder.
 
@@ -148,7 +148,7 @@ This component uses the 'template' blade view by default. You can change this te
 Want to add more custom attributes to modify the button text for example? Simply pass them down to the blade component, facade or helper method:
 
 ```html
-<x-open-graph-image
+<x-og-image
     title="Backstage"
     subtitle=""
     button="Read more"
@@ -182,7 +182,7 @@ This will return the actual image from your configured storage. You can use this
 All generated open graph images are cached by default. If you want to remove the cache, you can use the following command:
 
 ```bash
-php artisan open-graph-image:clear-cache
+php artisan og-image:clear-cache
 ```
 
 ## Changelog

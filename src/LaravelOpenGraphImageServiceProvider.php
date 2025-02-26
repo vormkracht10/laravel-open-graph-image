@@ -14,7 +14,7 @@ class LaravelOpenGraphImageServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package
-            ->name('open-graph-image')
+            ->name('og-image')
             ->hasRoute('web')
             ->hasConfigFile()
             ->hasViews()
@@ -28,6 +28,6 @@ class LaravelOpenGraphImageServiceProvider extends PackageServiceProvider
 
     public function packageRegistered()
     {
-        Blade::component('open-graph-image', OpenGraphImageComponent::class);
+        Blade::component('og-image', OpenGraphImageComponent::class);
     }
 }

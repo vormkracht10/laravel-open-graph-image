@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ClearCache extends Command
 {
-    public $signature = 'open-graph-image:clear-cache';
+    public $signature = 'og-image:clear-cache';
 
     public $description = 'Clear cached open graph images';
 
@@ -19,8 +19,8 @@ class ClearCache extends Command
     {
         parent::__construct();
 
-        $this->storageDisk = config('open-graph-image.storage.disk');
-        $this->storagePath = config('open-graph-image.storage.path');
+        $this->storageDisk = config('og-image.storage.disk');
+        $this->storagePath = config('og-image.storage.path');
     }
 
     public function handle(): int

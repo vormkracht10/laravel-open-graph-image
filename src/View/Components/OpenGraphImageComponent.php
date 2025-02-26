@@ -10,7 +10,7 @@ class OpenGraphImageComponent extends Component
 {
     public function render(): Closure
     {
-        $metatags = view('open-graph-image::metatags');
+        $metatags = view('og-image::metatags');
 
         return function (array $data) use ($metatags) {
             $this->updateAndCacheSlotView($data);
