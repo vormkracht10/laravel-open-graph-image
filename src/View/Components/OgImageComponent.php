@@ -1,10 +1,10 @@
 <?php
 
-namespace Backstage\Laravel\OgImage\View\Components;
+namespace Backstage\OgImage\Laravel\View\Components;
 
 use Closure;
 use Illuminate\View\Component;
-use Backstage\Laravel\OgImage\Facades\OgImage;
+use Backstage\OgImage\Laravel\Facades\OgImage;
 
 class OgImageComponent extends Component
 {

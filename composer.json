@@ -46,8 +46,8 @@
   "prefer-stable": true,
   "autoload": {
     "psr-4": {
-      "Backstage\\Laravel\\OgImage\\": "src",
-      "Backstage\\Laravel\\OgImage\\Database\\Factories\\": "database/factories"
+      "Backstage\\OgImage\\Laravel\\": "src",
+      "Backstage\\OgImage\\Laravel\\Database\\Factories\\": "database/factories"
     },
     "files": [
       "src/helpers.php"
@@ -55,7 +55,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Backstage\\Laravel\\OgImage\\Tests\\": "tests"
+      "Backstage\\OgImage\\Laravel\\Tests\\": "tests"
     }
   },
   "config": {
@@ -68,10 +68,10 @@
   "extra": {
     "laravel": {
       "aliases": {
-        "OgImage": "Backstage\\Laravel\\OgImage\\Facades\\OgImage"
+        "OgImage": "Backstage\\OgImage\\Laravel\\Facades\\OgImage"
       },
       "providers": [
-        "Backstage\\Laravel\\OgImage\\OgImageServiceProvider"
+        "Backstage\\OgImage\\Laravel\\OgImageServiceProvider"
       ]
     }
   },

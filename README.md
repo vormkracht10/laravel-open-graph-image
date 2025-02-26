@@ -105,7 +105,7 @@ If you don't want to use the blade component you can also use the facade or help
 
 ```php
 // Facade
-use Backstage\Laravel\OgImage\Facades\OgImage;
+use Backstage\OgImage\Laravel\Facades\OgImage;
 
 $url = OgImage::url(['title' => 'Backstage', 'subtitle' => '...']);
 
@@ -142,7 +142,7 @@ Want to add more custom attributes to modify the button text for example? Simply
 
 ```php
 // Facade
-use Backstage\Laravel\OgImage\Facades\OgImage;
+use Backstage\OgImage\Laravel\Facades\OgImage;
 
 OgImage::url(['title' => 'Slimme websites', 'subtitle' => '...', 'button' => 'Read more']);
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace Backstage\Laravel\OgImage;
+namespace Backstage\OgImage\Laravel;
 
 use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Backstage\Laravel\OgImage\Commands\ClearCache;
-use Backstage\Laravel\OgImage\View\Components\OgImageComponent;
+use Backstage\OgImage\Laravel\Commands\ClearCache;
+use Backstage\OgImage\Laravel\View\Components\OgImageComponent;
 
 class OgImageServiceProvider extends PackageServiceProvider
 {

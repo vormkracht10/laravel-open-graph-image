@@ -1,6 +1,6 @@
 <?php
 
-namespace Backstage\Laravel\OgImage\Facades;
+namespace Backstage\OgImage\Laravel\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -8,6 +8,6 @@ class OgImage extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \Backstage\Laravel\OgImage\OgImage::class;
+        return \Backstage\OgImage\Laravel\OgImage::class;
     }
 }

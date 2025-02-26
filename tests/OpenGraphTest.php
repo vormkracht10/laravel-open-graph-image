@@ -1,6 +1,6 @@
 <?php
 
-use Backstage\Laravel\OgImage\Facades\OgImage;
+use Backstage\OgImage\Laravel\Facades\OgImage;
 
 it('can generate an image using params', function () {
 

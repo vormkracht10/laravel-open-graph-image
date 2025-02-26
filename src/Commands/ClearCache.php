@@ -1,6 +1,6 @@
 <?php
 
-namespace Backstage\Laravel\OgImage\Commands;
+namespace Backstage\OgImage\Laravel\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;

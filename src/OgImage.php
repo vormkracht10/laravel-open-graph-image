@@ -1,6 +1,6 @@
 <?php
 
-namespace Backstage\Laravel\OgImage;
+namespace Backstage\OgImage\Laravel;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

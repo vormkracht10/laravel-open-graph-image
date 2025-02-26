@@ -1,14 +1,14 @@
 <?php
 
-namespace Backstage\Laravel\OgImage\Http\Controllers;
+namespace Backstage\OgImage\Laravel\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\View;
 use Spatie\Browsershot\Browsershot;
-use Backstage\Laravel\OgImage\Facades\OgImage;
+use Backstage\OgImage\Laravel\Facades\OgImage;
 
-class Laravel\OgImageController
+class OgImageController
 {
     public function __invoke(Request $request): Response
     {

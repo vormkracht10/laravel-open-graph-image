@@ -1,6 +1,6 @@
 <?php
 
-use Backstage\Laravel\OgImage\Facades\OgImage;
+use Backstage\OgImage\Laravel\Facades\OgImage;
 
 if (! function_exists('og')) {
     function og(...$args): string
