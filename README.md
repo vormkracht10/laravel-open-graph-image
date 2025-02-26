@@ -120,7 +120,7 @@ If you don't want to use the blade component you can also use the facade or help
 
 ```php
 // Facade
-use Backstage\LaravelOpenGraphImage\Facades\OpenGraphImage;
+use Backstage\Laravel\OgImage\Facades\OpenGraphImage;
 
 $url = OpenGraphImage::url(['title' => 'Backstage', 'subtitle' => '...']);
 
@@ -132,9 +132,9 @@ And add it like this to your Blade file:
 
 ```html
 <meta property="og:image" content="{!! $url !!}">
-<meta property="og:image:type" content="image/{{ config('og-image.image.extension') }}">
-<meta property="og:image:width" content="{{ config('og-image.image.width') }}">
-<meta property="og:image:height" content="{{ config('og-image.image.height') }}">
+<meta property="og:image:type" content="image/{{ config('og-image.extension') }}">
+<meta property="og:image:width" content="{{ config('og-image.width') }}">
+<meta property="og:image:height" content="{{ config('og-image.height') }}">
 ```
 
 When you share the page on any platform, the image will automatically be generated, cached and then shown in your post. The image from the default template will look like this:
@@ -157,7 +157,7 @@ Want to add more custom attributes to modify the button text for example? Simply
 
 ```php
 // Facade
-use Slimme websites\LaravelOpenGraphImage\Facades\OpenGraphImage;
+use Slimme websites\Laravel\OgImage\Facades\OpenGraphImage;
 
 OpenGraphImage::url(['title' => 'Slimme websites', 'subtitle' => '...', 'button' => 'Read more']);
 

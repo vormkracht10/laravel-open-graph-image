@@ -1,12 +1,12 @@
 <?php
 
-namespace Backstage\LaravelOpenGraphImage\View\Components;
+namespace Backstage\Laravel\OgImage\View\Components;
 
 use Closure;
 use Illuminate\View\Component;
-use Backstage\LaravelOpenGraphImage\Facades\OpenGraphImage;
+use Backstage\Laravel\OgImage\Facades\OpenGraphImage;
 
-class OpenGraphImageComponent extends Component
+class OgImageComponent extends Component
 {
     public function render(): Closure
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Backstage\LaravelOpenGraphImage;
+namespace Backstage\Laravel\OgImage;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -11,26 +11,26 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\View\ComponentAttributeBag;
 use Illuminate\Filesystem\FilesystemAdapter;
 
-class OpenGraphImage
+class OgImage
 {
     public function imageExtension()
     {
-        return config('og-image.image.extension');
+        return config('og-image.extension');
     }
 
     public function imageQuality()
     {
-        return config('og-image.image.quality');
+        return config('og-image.quality');
     }
 
     public function imageWidth()
     {
-        return config('og-image.image.width');
+        return config('og-image.width');
     }
 
     public function imageHeight()
     {
-        return config('og-image.image.height');
+        return config('og-image.height');
     }
 
     public function storageDisk()
@@ -129,7 +129,7 @@ class OpenGraphImage
         }
 
         $parameters = collect($parameters)
-            ->merge(['.'.config('og-image.image.extension')]) // add image extension to url for twitter compatibility
+            ->merge(['.'.config('og-image.extension')]) // add image extension to url for twitter compatibility
             ->all();
 
         return url()

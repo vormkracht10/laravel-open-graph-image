@@ -1,14 +1,14 @@
 <?php
 
-namespace Backstage\LaravelOpenGraphImage\Http\Controllers;
+namespace Backstage\Laravel\OgImage\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\View;
 use Spatie\Browsershot\Browsershot;
-use Backstage\LaravelOpenGraphImage\Facades\OpenGraphImage;
+use Backstage\Laravel\OgImage\Facades\OpenGraphImage;
 
-class LaravelOpenGraphImageController
+class Laravel\OgImageController
 {
     public function __invoke(Request $request): Response
     {

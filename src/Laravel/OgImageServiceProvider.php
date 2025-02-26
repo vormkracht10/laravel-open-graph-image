@@ -1,15 +1,15 @@
 <?php
 
-namespace Backstage\LaravelOpenGraphImage;
+namespace Backstage\Laravel\OgImage;
 
 use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Backstage\LaravelOpenGraphImage\Commands\ClearCache;
-use Backstage\LaravelOpenGraphImage\View\Components\OpenGraphImageComponent;
+use Backstage\Laravel\OgImage\Commands\ClearCache;
+use Backstage\Laravel\OgImage\View\Components\OpenGraphImageComponent;
 
-class LaravelOpenGraphImageServiceProvider extends PackageServiceProvider
+class OgImageServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {

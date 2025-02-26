@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Backstage\LaravelOpenGraphImage\Http\Controllers\LaravelOpenGraphImageController;
+use Backstage\Laravel\OgImage\Http\Controllers\Laravel\OgImageController;
 
 if (app()->environment('local')) {
-    Route::get('og-image/preview', [LaravelOpenGraphImageController::class, '__invoke'])->name('og-image.html');
+    Route::get('og-image/preview', [Laravel\OgImageController::class, '__invoke'])->name('og-image.html');
 }
 
-Route::get('og-image', [LaravelOpenGraphImageController::class, '__invoke'])->name('og-image.file');
+Route::get('og-image', [Laravel\OgImageController::class, '__invoke'])->name('og-image.file');
