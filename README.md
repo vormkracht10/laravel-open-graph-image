@@ -41,20 +41,7 @@ Run the command to install the package:
 php artisan og-image:install
 ```
 
-Then you should install puppeteer:
-
-```bash
-npm install puppeteer
-```
-
-And make sure Puppeteer can find the correct node and npm versions on your computer or server. When it can't find node or npm, add the custom paths using these .env variables. You can use `which node` and `which npm` to find the correct paths to these binaries:
-
-```
-NODE_PATH="..." // fill in output of `which node`
-NPM_PATH="..." // fill in output of `which npm`
-```
-
-You should also publish the views, to change the default layout of your Open Graph Images:
+You should also publish the views, to change the default layout of your Open Graph images:
 
 ```bash
 php artisan vendor:publish --tag="og-image-views"
@@ -64,17 +51,15 @@ This is the content of the published config file (published at `config/og-image.
 
 ```php
 return [
-    'image' => [
-        'extension' => 'jpg',
-        'quality' => 100,
-        'width' => 1200,
-        'height' => 630,
-    ],
+    'extension' => 'jpg',
+    'quality' => 100,
+    'width' => 1200,
+    'height' => 630,
 
     // The cache location to use.
     'storage' => [
         'disk' => 'public',
-        'path' => 'social/open-graph',
+        'path' => 'open-graph',
     ],
 
     // Whether to use the browse URL instead of the HTML input.
@@ -120,9 +105,9 @@ If you don't want to use the blade component you can also use the facade or help
 
 ```php
 // Facade
-use Backstage\Laravel\OgImage\Facades\OpenGraphImage;
+use Backstage\Laravel\OgImage\Facades\OgImage;
 
-$url = OpenGraphImage::url(['title' => 'Backstage', 'subtitle' => '...']);
+$url = OgImage::url(['title' => 'Backstage', 'subtitle' => '...']);
 
 // or using the `og()` helper
 $url = og(['title' => 'Backstage', 'subtitle' => '...']);
@@ -157,9 +142,9 @@ Want to add more custom attributes to modify the button text for example? Simply
 
 ```php
 // Facade
-use Slimme websites\Laravel\OgImage\Facades\OpenGraphImage;
+use Backstage\Laravel\OgImage\Facades\OgImage;
 
-OpenGraphImage::url(['title' => 'Slimme websites', 'subtitle' => '...', 'button' => 'Read more']);
+OgImage::url(['title' => 'Slimme websites', 'subtitle' => '...', 'button' => 'Read more']);
 
 // Helper
 og(['title' => 'Backstage', 'subtitle' => '...', 'button' => 'Read more']);
@@ -172,7 +157,7 @@ You can now access the variable in your view by using the `{{ $button }}` variab
 When you need to generate the image without using the blade component, you can use the following method:
 
 ```php
-OpenGraphImage::createImageFromParams(['title' => 'Backstage', 'subtitle' => '...']);
+OgImage::createImageFromParams(['title' => 'Backstage', 'subtitle' => '...']);
 ```
 
 This will return the actual image from your configured storage. You can use this method to generate the image in your own controller for example.

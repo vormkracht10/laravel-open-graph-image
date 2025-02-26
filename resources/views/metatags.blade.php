@@ -5,7 +5,7 @@
 @endforeach
 
 <meta property="og:image" content="{!! og($attributes) !!}">
-<meta property="og:image:type" content="{{ Backstage\Laravel\OgImage\Facades\OpenGraphImage::getImageMimeType() }}">
+<meta property="og:image:type" content="{{ Backstage\Laravel\OgImage\Facades\OgImage::getImageMimeType() }}">
 <meta property="og:image:width" content="{{ config('og-image.width') }}">
 <meta property="og:image:height" content="{{ config('og-image.height') }}">
 

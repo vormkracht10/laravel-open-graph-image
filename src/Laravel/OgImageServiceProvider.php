@@ -7,7 +7,7 @@ use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Backstage\Laravel\OgImage\Commands\ClearCache;
-use Backstage\Laravel\OgImage\View\Components\OpenGraphImageComponent;
+use Backstage\Laravel\OgImage\View\Components\OgImageComponent;
 
 class OgImageServiceProvider extends PackageServiceProvider
 {
@@ -28,6 +28,6 @@ class OgImageServiceProvider extends PackageServiceProvider
 
     public function packageRegistered()
     {
-        Blade::component('og-image', OpenGraphImageComponent::class);
+        Blade::component('og-image', OgImageComponent::class);
     }
 }

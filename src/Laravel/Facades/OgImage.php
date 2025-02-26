@@ -8,6 +8,6 @@ class OgImage extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \Backstage\Laravel\OgImage\OpenGraphImage::class;
+        return \Backstage\Laravel\OgImage\OgImage::class;
     }
 }

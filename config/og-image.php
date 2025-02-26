@@ -9,7 +9,7 @@ return [
     // The cache location to use.
     'storage' => [
         'disk' => 'public',
-        'path' => 'open-graph',
+        'path' => 'og-images',
     ],
 
     // Whether to use the browse URL instead of the HTML input.
@@ -22,12 +22,5 @@ return [
         'og:description' => 'description',
         'og:type' => 'type',
         'og:url' => 'url',
-    ],
-
-    // set custom paths for node and npm binaries for puppeteer
-    // leave empty to resolve using default paths
-    'paths' => [
-        'node' => env('NODE_PATH'),
-        'npm' => env('NPM_PATH'),
     ],
 ];

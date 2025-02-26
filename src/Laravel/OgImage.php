@@ -155,29 +155,29 @@ class OgImage
     {
         $signature = $this->getSignature($parameters);
 
-        if (! OpenGraphImage::getStorageImageFileExists($signature)) {
+        if (! OgImage::getStorageImageFileExists($signature)) {
             $html = View::make('og-image::template', $parameters)
                 ->render();
 
-            OpenGraphImage::saveImage($html, $signature);
+            OgImage::saveImage($html, $signature);
         }
 
         return Storage::disk(config('og-image.storage.disk'))
-            ->get(OpenGraphImage::getStorageImageFilePath($signature));
+            ->get(OgImage::getStorageImageFilePath($signature));
     }
 
     public function saveImage(string $html, string $filename): void
     {
-        if (OpenGraphImage::getStorageImageFileExists($filename)) {
+        if (OgImage::getStorageImageFileExists($filename)) {
             return;
         }
 
-        OpenGraphImage::ensureDirectoryExists('images');
+        OgImage::ensureDirectoryExists('images');
 
         $screenshot = $this->getScreenshot($html, $filename);
 
-        OpenGraphImage::getStorageDisk()
-            ->put(OpenGraphImage::getStorageImageFilePath($filename), $screenshot);
+        OgImage::getStorageDisk()
+            ->put(OgImage::getStorageImageFilePath($filename), $screenshot);
     }
 
     public function getScreenshot(string $html, string $filename): string
@@ -185,8 +185,8 @@ class OgImage
         $browsershot = Browsershot::html($html)
             ->noSandbox()
             ->showBackground()
-            ->windowSize(OpenGraphImage::imageWidth(), OpenGraphImage::imageHeight())
-            ->setScreenshotType(OpenGraphImage::getImageMimeType(), OpenGraphImage::imageQuality());
+            ->windowSize(OgImage::imageWidth(), OgImage::imageHeight())
+            ->setScreenshotType(OgImage::getImageMimeType(), OgImage::imageQuality());
 
         if (config('og-image.paths.node')) {
             $browsershot = $browsershot->setNodeBinary(config('og-image.paths.node'));
@@ -196,15 +196,15 @@ class OgImage
             $browsershot = $browsershot->setNpmBinary(config('og-image.paths.npm'));
         }
 
-        return $browsershot->screenshot(OpenGraphImage::getStorageImageFilePath($filename));
+        return $browsershot->screenshot(OgImage::getStorageImageFilePath($filename));
     }
 
     public function getResponse(Request $request): Response
     {
         $this->generateImage($request);
 
-        return response(OpenGraphImage::getStorageImageFileData($request->signature), 200, [
-            'Content-Type' => 'image/'.OpenGraphImage::getImageMimeType(),
+        return response(OgImage::getStorageImageFileData($request->signature), 200, [
+            'Content-Type' => 'image/'.OgImage::getImageMimeType(),
         ]);
     }
 
@@ -213,8 +213,8 @@ class OgImage
         if($request->view && view()->exists($request->view)) {
             $html = View::make($request->view, $request->all())
                 ->render();
-        } else if(OpenGraphImage::getStorageViewFileExists($request->signature)) {
-            $html = OpenGraphImage::getStorageViewFileData($request->signature);
+        } else if(OgImage::getStorageViewFileExists($request->signature)) {
+            $html = OgImage::getStorageViewFileData($request->signature);
         }
         else {
             $html = View::make('og-image::template', $request->all())
@@ -225,6 +225,6 @@ class OgImage
             return $html;
         }
 
-        OpenGraphImage::saveImage($html, $request->signature);
+        OgImage::saveImage($html, $request->signature);
     }
 }

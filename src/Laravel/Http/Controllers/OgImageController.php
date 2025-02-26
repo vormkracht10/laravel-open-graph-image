@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\View;
 use Spatie\Browsershot\Browsershot;
-use Backstage\Laravel\OgImage\Facades\OpenGraphImage;
+use Backstage\Laravel\OgImage\Facades\OgImage;
 
 class Laravel\OgImageController
 {
@@ -16,6 +16,6 @@ class Laravel\OgImageController
             abort(403);
         }
 
-        return OpenGraphImage::getResponse($request);
+        return OgImage::getResponse($request);
     }
 }

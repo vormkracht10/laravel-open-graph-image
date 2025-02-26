@@ -4,7 +4,7 @@ namespace Backstage\Laravel\OgImage\View\Components;
 
 use Closure;
 use Illuminate\View\Component;
-use Backstage\Laravel\OgImage\Facades\OpenGraphImage;
+use Backstage\Laravel\OgImage\Facades\OgImage;
 
 class OgImageComponent extends Component
 {
@@ -21,23 +21,23 @@ class OgImageComponent extends Component
 
     public function updateAndCacheSlotView($data)
     {
-        $signature = OpenGraphImage::getSignature($data['attributes']);
+        $signature = OgImage::getSignature($data['attributes']);
 
-        OpenGraphImage::ensureDirectoryExists('views');
+        OgImage::ensureDirectoryExists('views');
 
         if (
             trim((string) $data['slot']) === '' ||
             $this->getSlotHash($data['slot']) !== $this->getCachedSlotHash($signature)
         ) {
-            OpenGraphImage::getStorageDisk()->put(
-                OpenGraphImage::getStorageViewFilePath($signature), $data['slot']
+            OgImage::getStorageDisk()->put(
+                OgImage::getStorageViewFilePath($signature), $data['slot']
             );
         }
     }
 
     public function getCachedSlotHash(string $signature): ?string
     {
-        return OpenGraphImage::getStorageViewFileData($signature);
+        return OgImage::getStorageViewFileData($signature);
     }
 
     public function getSlotHash($slot): string
